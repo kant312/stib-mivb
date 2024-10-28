@@ -32,8 +32,8 @@ final class Client
     {
         $response = $this->httpClient->get(self::PATH_TRAVELLERS_INFORMATION);
         $content = $response->getBody()->getContents();
-        $unserialized = json_decode($content, false, 10, JSON_THROW_ON_ERROR);
+        $deserialized = json_decode($content, false, 10, JSON_THROW_ON_ERROR);
         
-        return array_map(fn ($travellersInformation) => TravellersInformation::fromObject($travellersInformation) , $unserialized->results);
+        return array_map(fn ($travellersInformation) => TravellersInformation::fromObject($travellersInformation) , $deserialized->results);
     }
 }
