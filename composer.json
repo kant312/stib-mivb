@@ -1,0 +1,22 @@
+{
+    "name": "kant/stib-mivb",
+    "description": "Quickly retrieve data from the STIB-MIVB APIs in PHP",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kant\\StibMivb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Quentin Delcourt",
+            "email": "quentin@delcourt.be"
+        }
+    ]
+}
