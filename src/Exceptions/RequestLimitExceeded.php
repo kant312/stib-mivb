@@ -8,7 +8,9 @@ use Exception;
 
 final class RequestLimitExceeded extends Exception
 {
-    private function __construct() {}
+    private function __construct(string $error) {
+        parent::__construct($error);
+    }
 
     public static function create(): self
     {

@@ -42,6 +42,8 @@ final class Client
             if ($e->getCode() === self::HTTP_STATUS_TOO_MANY_REQUESTS) {
                 throw RequestLimitExceeded::create();
             }
+
+            throw $e;
         }
         
         
