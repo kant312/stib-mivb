@@ -8,6 +8,10 @@ use stdClass;
 
 final readonly class TravellersInformation
 {
+    /**
+     * @param LineId[] $lines
+     * @param int[] $points
+     */
     private function __construct(
         public Priority $priority,
         public array $lines,

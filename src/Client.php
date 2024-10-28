@@ -61,6 +61,9 @@ final class Client
         );
     }
 
+    /**
+     * @return int[]
+     */
     public function latestWaitingTimes(): array
     {
         return [];
