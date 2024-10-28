@@ -17,6 +17,14 @@
             "Kant\\StibMivb\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "qa": [
+            "composer sa",
+            "composer tests"
+        ],
+        "tests": "vendor/bin/phpunit",
+        "sa": "vendor/bin/phpstan analyse src tests --level 8"
+    },
     "authors": [
         {
             "name": "Quentin Delcourt",
