@@ -9,7 +9,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "*",
-        "phpstan/phpstan": "^1.12"
+        "phpstan/phpstan": "^1.12",
+        "friendsofphp/php-cs-fixer": "^3.64"
     },
     "autoload": {
         "psr-4": {
@@ -19,9 +20,11 @@
     },
     "scripts": {
         "qa": [
+            "composer csf",
             "composer sa",
             "composer tests"
         ],
+        "csf": "vendor/bin/php-cs-fixer fix src",
         "tests": "vendor/bin/phpunit",
         "sa": "vendor/bin/phpstan analyse src tests --level 8"
     },
