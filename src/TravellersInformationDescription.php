@@ -12,7 +12,8 @@ final readonly class TravellersInformationDescription
         public string $english,
         public string $french,
         public string $dutch,
-    ) {}
+    ) {
+    }
 
     public static function fromJson(string $data): self
     {

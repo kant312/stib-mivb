@@ -8,7 +8,8 @@ final readonly class Priority
 {
     private function __construct(
         public int $priority
-    ) {}
+    ) {
+    }
 
     public static function fromInt(int $priority): self
     {

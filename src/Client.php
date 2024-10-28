@@ -14,9 +14,9 @@ use stdClass;
 final class Client
 {
     private const API_ENDPOINT = 'https://stibmivb.opendatasoft.com/api/explore/v2.1/';
-    
+
     private const PATH_TRAVELLERS_INFORMATION = 'catalog/datasets/travellers-information-rt-production/records';
-    
+
     private const HTTP_STATUS_TOO_MANY_REQUESTS = 429;
 
     private GuzzleClient $httpClient;
@@ -45,8 +45,8 @@ final class Client
 
             throw $e;
         }
-        
-        
+
+
         return json_decode($content, false, 10, JSON_THROW_ON_ERROR);
     }
 
@@ -56,7 +56,7 @@ final class Client
     public function latestTravellersInformation(): array
     {
         return array_map(
-            fn ($travellersInformation) => TravellersInformation::fromObject($travellersInformation), 
+            fn ($travellersInformation) => TravellersInformation::fromObject($travellersInformation),
             $this->request(self::PATH_TRAVELLERS_INFORMATION)->results
         );
     }

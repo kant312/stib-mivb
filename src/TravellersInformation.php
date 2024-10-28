@@ -17,14 +17,15 @@ final readonly class TravellersInformation
         public array $lines,
         public array $points,
         public TravellersInformationDescription $description,
-    ) {}
+    ) {
+    }
 
     public static function fromObject(stdClass $data): self
     {
         $lines = json_decode($data->lines, false, 5, JSON_THROW_ON_ERROR);
-        $lines = array_map(fn($line) => LineId::fromString($line->id), $lines);
+        $lines = array_map(fn ($line) => LineId::fromString($line->id), $lines);
         $points = json_decode($data->points, false, 5, JSON_THROW_ON_ERROR);
-        $points = array_map(fn($point) => (int) $point->id, $points);
+        $points = array_map(fn ($point) => (int) $point->id, $points);
 
         return new self(
             Priority::fromInt($data->priority),
