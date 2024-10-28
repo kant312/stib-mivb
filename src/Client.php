@@ -60,4 +60,9 @@ final class Client
             $this->request(self::PATH_TRAVELLERS_INFORMATION)->results
         );
     }
+
+    public function latestWaitingTimes(): array
+    {
+        return [];
+    }
 }
