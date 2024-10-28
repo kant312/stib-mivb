@@ -1,16 +1,19 @@
 {
     "name": "kant/stib-mivb",
+    "version": "dev-0.1.0",
     "description": "Quickly retrieve data from the STIB-MIVB APIs in PHP",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^7.9"
+        "guzzlehttp/guzzle": "^7.9",
+        "php": "^8.3"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {
-            "Kant\\StibMivb\\": "src/"
+            "Kant\\StibMivb\\": "src/",
+            "Kant\\StibMivb\\Tests\\": "tests/"
         }
     },
     "authors": [
