@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace Kant312\StibMivb\Model;
-final readonly class Point
+final readonly class PointID
 {
     private function __construct(public int $point)
     {

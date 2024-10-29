@@ -10,7 +10,7 @@ final readonly class TravellersInformation
 {
     /**
      * @param LineID[] $lines
-     * @param Point[] $points
+     * @param PointID[] $points
      */
     private function __construct(
         public Priority $priority,
@@ -25,7 +25,7 @@ final readonly class TravellersInformation
         $lines = json_decode($data->lines, false, 5, JSON_THROW_ON_ERROR);
         $lines = array_map(fn ($line) => LineID::fromString($line->id), $lines);
         $points = json_decode($data->points, false, 5, JSON_THROW_ON_ERROR);
-        $points = array_map(fn ($point) => Point::fromInt((int) $point->id), $points);
+        $points = array_map(fn ($point) => PointID::fromInt((int) $point->id), $points);
 
         return new self(
             Priority::fromInt($data->priority),
