@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Kant312\StibMivb\Model;
 final readonly class PointID
 {
-    private function __construct(public int $point)
+    private function __construct(public int $pointId)
     {
     }
 
-    public static function fromInt(int $point): self
+    public static function fromInt(int $pointId): self
     {
-        return new self($point);
+        return new self($pointId);
     }
 }

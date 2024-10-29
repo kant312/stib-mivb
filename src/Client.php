@@ -8,6 +8,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Kant312\StibMivb\Exceptions\RequestLimitExceeded;
 use Kant312\StibMivb\Model\TravellersInformation;
+use Kant312\StibMivb\Model\WaitingTime;
 use stdClass;
 
 final class Client
@@ -15,6 +16,7 @@ final class Client
     private const API_ENDPOINT = 'https://stibmivb.opendatasoft.com/api/explore/v2.1/';
 
     private const PATH_TRAVELLERS_INFORMATION = 'catalog/datasets/travellers-information-rt-production/records';
+    private const PATH_WAITING_TIMES = 'catalog/datasets/waiting-time-rt-production/records';
 
     private const PARAMS_API_KEY = 'apikey';
 
@@ -58,7 +60,6 @@ final class Client
             throw $e;
         }
 
-
         return json_decode($content, false, 10, JSON_THROW_ON_ERROR);
     }
 
@@ -74,10 +75,13 @@ final class Client
     }
 
     /**
-     * @return int[]
+     * @return WaitingTime[]
      */
     public function latestWaitingTimes(): array
     {
-        return [];
+        return array_map(
+            fn ($waitingTimes) => WaitingTime::fromObject($waitingTimes),
+            $this->request(self::PATH_WAITING_TIMES)->results
+        );
     }
 }
