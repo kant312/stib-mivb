@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kant312\StibMivb;
-
-use stdClass;
+namespace Kant312\StibMivb\Model;
 
 final readonly class TravellersInformationDescription
 {

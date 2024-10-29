@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kant312\StibMivb;
+namespace Kant312\StibMivb\Model;
 
 final readonly class Priority
 {

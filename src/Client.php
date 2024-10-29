@@ -7,6 +7,7 @@ namespace Kant312\StibMivb;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Kant312\StibMivb\Exceptions\RequestLimitExceeded;
+use Kant312\StibMivb\Model\TravellersInformation;
 use stdClass;
 
 final class Client
