@@ -13,7 +13,9 @@ final class TravellersInformationTest extends TestCase
     #[Test]
     public function travellers_information_can_be_fetched(): void
     {
-        $travellersInformation = Client::create()->latestTravellersInformation();
+        $apiKey = getenv('STIB_MIVB_API_KEY');
+        $apiKey = ($apiKey === false) ? '' : $apiKey;
+        $travellersInformation = Client::create($apiKey)->latestTravellersInformation();
         self::assertLessThan(20, count($travellersInformation));
     }
 }

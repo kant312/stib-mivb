@@ -6,9 +6,7 @@ namespace Kant\StibMivb;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Psr7\Response;
 use Kant\StibMivb\Exceptions\RequestLimitExceeded;
-use Psr\Http\Message\ResponseInterface;
 use stdClass;
 
 final class Client
@@ -17,26 +15,39 @@ final class Client
 
     private const PATH_TRAVELLERS_INFORMATION = 'catalog/datasets/travellers-information-rt-production/records';
 
+    private const PARAMS_API_KEY = 'apikey';
+
     private const HTTP_STATUS_TOO_MANY_REQUESTS = 429;
 
     private GuzzleClient $httpClient;
+    private string $apiKey;
 
-    private function __construct()
+    private function __construct(string $apiKey)
     {
+        $this->apiKey = $apiKey;
         $this->httpClient = new GuzzleClient(
             ['base_uri' => self::API_ENDPOINT]
         );
     }
 
-    public static function create(): self
+    public static function create(string $apiKey = ''): self
     {
-        return new self();
+        return new self($apiKey);
     }
 
     private function request(string $path): stdClass
     {
         try {
-            $response = $this->httpClient->get($path);
+            $params = [];
+            if ($this->apiKey !== '') {
+                $params = [
+                    'query' => [
+                        self::PARAMS_API_KEY => $this->apiKey,
+                    ],
+                ];
+            }
+
+            $response = $this->httpClient->get($path, $params);
             $content = $response->getBody()->getContents();
         } catch (ClientException $e) {
             if ($e->getCode() === self::HTTP_STATUS_TOO_MANY_REQUESTS) {
