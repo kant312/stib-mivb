@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Kant312\StibMivb\Model;
+
 use stdClass;
 
 final readonly class WaitingTime
@@ -11,8 +12,7 @@ final readonly class WaitingTime
         public PointID $pointID,
         public LineID $lineID,
         public PassingTimes $passingTimes,
-    )
-    {
+    ) {
     }
 
     public static function fromObject(stdClass $data): self
