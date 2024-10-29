@@ -1,3 +1,9 @@
 /vendor/
 .phpunit.cache
 .php-cs-fixer.cache
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/php-test-framework.xml
+/.idea/phpunit.xml
+/.idea/stib-mivb.iml
+/.idea/vcs.xml
