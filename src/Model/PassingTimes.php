@@ -15,13 +15,17 @@ final readonly class PassingTimes
         public string $messageFr,
         public string $messageNl,
         public DateTimeImmutable $expectedArrivalTime,
-    )
-    {
+    ) {
     }
 
     public static function fromJson(string $json): self
     {
         $deserialised = json_decode($json, false, 512, JSON_THROW_ON_ERROR);
+        $expectedArrivalTime = DateTimeImmutable::createFromFormat(
+            DateTimeImmutable::ATOM,
+            $deserialised[0]->expectedArrivalTime
+        );
+        $expectedArrivalTime = ($expectedArrivalTime === false) ? new DateTimeImmutable() : $expectedArrivalTime;
 
         return new self(
             $deserialised[0]->destination->fr ?? '',
@@ -29,7 +33,7 @@ final readonly class PassingTimes
             $deserialised[0]->message->en ?? '',
             $deserialised[0]->message->fr ?? '',
             $deserialised[0]->message->nl ?? '',
-            DateTimeImmutable::createFromFormat(DateTimeImmutable::ATOM, $deserialised[0]->expectedArrivalTime),
+            $expectedArrivalTime,
         );
     }
 }
