@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kant312\StibMivb\Model;
 
-final readonly class LineId
+final readonly class LineID
 {
     private function __construct(
         public string $lineId,
