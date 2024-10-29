@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kant\StibMivb\Exceptions;
+namespace Kant312\StibMivb\Exceptions;
 
 use Exception;
 

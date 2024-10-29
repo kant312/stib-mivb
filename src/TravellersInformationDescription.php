@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kant\StibMivb;
+namespace Kant312\StibMivb;
 
 use stdClass;
 

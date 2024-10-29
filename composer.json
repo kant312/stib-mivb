@@ -1,5 +1,5 @@
 {
-    "name": "kant/stib-mivb",
+    "name": "kant312/stib-mivb",
     "version": "dev-0.1.0",
     "description": "Quickly retrieve data from the STIB-MIVB APIs in PHP",
     "type": "library",
@@ -14,8 +14,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Kant\\StibMivb\\": "src/",
-            "Kant\\StibMivb\\Tests\\": "tests/"
+            "Kant312\\StibMivb\\": "src/",
+            "Kant312\\StibMivb\\Tests\\": "tests/"
         }
     },
     "scripts": {

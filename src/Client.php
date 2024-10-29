@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Kant\StibMivb;
+namespace Kant312\StibMivb;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
-use Kant\StibMivb\Exceptions\RequestLimitExceeded;
+use Kant312\StibMivb\Exceptions\RequestLimitExceeded;
 use stdClass;
 
 final class Client
