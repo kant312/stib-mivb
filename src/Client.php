@@ -8,6 +8,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use Kant312\StibMivb\Exceptions\RequestLimitExceeded;
 use Kant312\StibMivb\Model\TravellersInformation;
+use Kant312\StibMivb\Model\VehiclePositions;
 use Kant312\StibMivb\Model\WaitingTime;
 use stdClass;
 
@@ -16,6 +17,7 @@ final class Client
     private const API_ENDPOINT = 'https://stibmivb.opendatasoft.com/api/explore/v2.1/';
 
     private const PATH_TRAVELLERS_INFORMATION = 'catalog/datasets/travellers-information-rt-production/records';
+    private const PATH_VEHICLE_POSITION = 'catalog/datasets/vehicle-position-rt-production/records';
     private const PATH_WAITING_TIMES = 'catalog/datasets/waiting-time-rt-production/records';
 
     private const PARAMS_API_KEY = 'apikey';
@@ -82,6 +84,14 @@ final class Client
         return array_map(
             fn ($waitingTimes) => WaitingTime::fromObject($waitingTimes),
             $this->request(self::PATH_WAITING_TIMES)->results
+        );
+    }
+
+    public function latestVehiclePositions()
+    {
+        return array_map(
+            fn ($vehiclePositions) => VehiclePositions::fromObject($vehiclePositions),
+            $this->request((self::PATH_VEHICLE_POSITION))->results
         );
     }
 }
